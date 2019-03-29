@@ -8,18 +8,6 @@ def get_time():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
-def log_links(date, link, type, apod_directory):
-    image_list_path = "{}images_list.csv".format(apod_directory)
-    colnames = ['date', 'link', 'type']
-    if (not os.path.isfile(image_list_path )):
-        with open(image_list_path , 'a') as file:
-            file.write(';'.join(map(str, colnames)))
-            file.write('\n')
-    row_content = "{};{};{}\n".format(date, link, type)
-    with open(image_list_path, "a") as file:
-        file.write(row_content)
-
-
 def log_messages(message, apod_directory):
     log_file_path = "{}log.txt".format(apod_directory)
     message = "{}: {}\n".format(get_time(), message)
@@ -54,12 +42,11 @@ class Apod(object):
             open(wallpaper_path, 'wb').write(image.content)
             if set_wallpaper:
                 os.system("gsettings set org.gnome.desktop.background picture-uri file://{}".format(wallpaper_path))
-            message = "APOD image downloaded successfully"
+            message = "APOD image downloaded successfully, APOD web page: {}".format(apod_link)
             log_messages(message=message, apod_directory=self.apod_directory)
         else:
-            message = "APOD content isn't an image, so it's not being downloaded"
+            message = "APOD content isn't an image, so it's not being downloaded, APOD web page: {}".format(apod_link)
             log_messages(message=message, apod_directory=self.apod_directory)
-        log_links(date=date, link=apod_link, type=media_type, apod_directory=self.apod_directory)
 
 date = datetime.now().strftime("%Y-%m-%d")
 apod_directory = "{}/APOD/".format(os.path.expanduser("~"))
