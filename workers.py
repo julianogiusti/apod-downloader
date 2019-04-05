@@ -2,6 +2,8 @@ import os
 import requests
 import json
 
+#TODO dados da imagem em um arquivo ou salvar no banco
+
 
 class Worker(object):
 
