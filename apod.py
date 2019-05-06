@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 import os
 import re
+import sys
 import requests
 from datetime import datetime
 
@@ -48,7 +48,10 @@ class Apod(object):
             message = "APOD content isn't an image, so it's not being downloaded, APOD web page: {}".format(apod_link)
             log_messages(message=message, apod_directory=self.apod_directory)
 
-date = datetime.now().strftime("%Y-%m-%d")
+if len(sys.argv) > 0:
+    date = str(sys.argv[1])
+else:
+    date = datetime.now().strftime("%Y-%m-%d")
 apod_directory = "{}/APOD/".format(os.path.expanduser("~"))
 if not os.path.exists(apod_directory):
     try:
