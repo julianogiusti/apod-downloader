@@ -48,7 +48,7 @@ class Apod(object):
             message = "APOD content isn't an image, so it's not being downloaded, APOD web page: {}".format(apod_link)
             log_messages(message=message, apod_directory=self.apod_directory)
 
-if len(sys.argv) > 0:
+if len(sys.argv) > 1:
     date = str(sys.argv[1])
 else:
     date = datetime.now().strftime("%Y-%m-%d")
