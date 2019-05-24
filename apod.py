@@ -5,6 +5,10 @@ import random
 from datetime import datetime
 
 class Apod(object):
+    
+    def __init__(self, url=None):
+        print("faltou o init aqui")
+        #self.url = url
 
     def url(self):
         return self.url
