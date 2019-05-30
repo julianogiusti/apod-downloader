@@ -62,7 +62,6 @@ class Apod(object):
                 self.log_messages(message="Creating directory {} to store images from APOD".format(self.apod_directory), apod_directory=self.apod_directory)
             except Exception as ex:
                 self.log_messages(message="Error trying to create APOD directory: {}".format(ex), apod_directory=self.apod_directory)
-                exit(1)
 
     def log_messages(self, message, apod_directory):
         log_file_path = "{}log.txt".format(apod_directory)
