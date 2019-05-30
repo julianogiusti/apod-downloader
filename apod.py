@@ -1,5 +1,4 @@
 import os
-import sys
 import requests
 import random
 from datetime import datetime
@@ -8,6 +7,9 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 class Apod(object):
+
+    def __init__(self, url=None):
+        self.url = url
 
     def url(self):
         return self.url
