@@ -94,7 +94,6 @@ class Apod(object):
 
     def log_messages(self, message):
         message = "{}: {}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), message)
-        print message
         with open(self.log_file, "a") as file:
             file.write("{}".format(message))
 
