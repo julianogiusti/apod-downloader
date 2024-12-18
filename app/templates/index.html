@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APOD downloader</title>
+</head>
+<body>
+<form method="get" action="{{ url_for('apod') }}">
+    <input type="date" name="date" />
+    <button type="submit">Enviar</button>
+</form>
+</body>
+</html>
+
+<style>
+    body {
+        background-color: black;
+    }
+</style>
